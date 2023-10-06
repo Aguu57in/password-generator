@@ -70,7 +70,7 @@ export const PasswordGenerator = () => {
     <section className="main-container">
       <h2 className="titulo">Password Generator</h2>
       <div className="password-container">
-        <input type="text" value={Password} placeholder="Click en 'Generar' para empezar" readOnly />
+        <input name="password" type="text" value={Password} placeholder="Click en 'Generar' para empezar" readOnly />
         <button
           className="btn-copy"
           onClick={handleCopyClick}>
@@ -83,54 +83,64 @@ export const PasswordGenerator = () => {
 
       <section className="customize">
         <div className="length-option">
-          <label>Caracteres</label>
-          <div className="slide">
-            <p className="length-value">{Length}</p>
-            <input
-              type="range"
-              min={5}
-              max={30}
-              defaultValue={Length}
-              onChange={(e) => setLength(e.currentTarget.value)}
-            />
-          </div>
+          <label>Caracteres
+            <div className="slide">
+              <p className="length-value">{Length}</p>
+              <input
+                name="length"
+                type="range"
+                min={5}
+                max={30}
+                defaultValue={Length}
+                onChange={(e) => setLength(e.currentTarget.value)}
+              />
+            </div>
+          </label>
         </div>
         <div className="checkboxes-area">
           <div className="char-option">
+            <label>
             <input
+              name="upper"
               type="checkbox"
               disabled={!Lower && !Numbers && !Symbols}
               checked={Upper}
               onChange={() => setUpper(!Upper)}
               />
-              <label>Mayúsculas</label>
+              Mayúsculas</label>
           </div>
           <div className="char-option">
+            <label>
             <input
+              name="lower"
               type="checkbox"
               disabled={!Upper && !Numbers && !Symbols}
               checked={Lower}
               onChange={() => setLower(!Lower)}
               />
-              <label>Minúsculas</label>
+              Minúsculas</label>
           </div>
           <div className="char-option">
+            <label>
             <input
+              name="numbers"
               type="checkbox"
               disabled={!Upper && !Lower && !Symbols}
               checked={Numbers}
               onChange={() => setNumbers(!Numbers)}
               />
-              <label>Números</label>
+              Números</label>
           </div>
           <div className="char-option">
+            <label>
             <input
+              name="symbols"
               type="checkbox"
               disabled={!Upper && !Lower && !Numbers}
               checked={Symbols}
               onChange={() => setSymbols(!Symbols)}
               />
-              <label>Símbolos</label>
+              Símbolos</label>
           </div>
         </div>
       </section>
